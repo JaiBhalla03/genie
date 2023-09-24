@@ -12,14 +12,14 @@ const tools = [
         icon: MessageSquare,
         color: "text-violet-500",
         bgColor: "bg-violet-500/10",
-        href: "/Conversation"
+        href: "/conversation"
     },
     {
         label: "Music Generation",
         icon: Music,
         color: "text-emerald-500",
         bgColor: "bg-emerald-500/10",
-        href: "/Music"
+        href: "/music"
     },
     {
         label: "Image Generation",
