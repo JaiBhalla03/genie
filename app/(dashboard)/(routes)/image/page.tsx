@@ -97,7 +97,7 @@ const Page = () => {
                                 )
                             }/>
                             <FormField
-                                name={"resolutions"} control={form.control}
+                                name={"resolution"} control={form.control}
                                 render={
                                 ({field})=>(
                                     <FormItem className={'col-span-12 lg:col-span-3'}>
