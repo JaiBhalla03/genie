@@ -17,8 +17,10 @@ import Loader from "@/components/Loader";
 import {Select, SelectContent, SelectItem, SelectTrigger} from "@/components/ui/select";
 import {SelectValue} from "@radix-ui/react-select";
 import {Card, CardFooter} from "@/components/ui/card";
+import {useProModal} from "@/hooks/use-pro-modal";
 
 const Page = () => {
+    const proModal = useProModal();
     const router = useRouter();
     const [images, setImages] = useState<string[]>([]);
 
@@ -40,7 +42,9 @@ const Page = () => {
             form.reset();
         }
         catch(error: any){
-            console.log(error);
+            if(error?.response?.status === 403){
+                proModal.onOpen();
+            }
         }
         finally {
             router.refresh();

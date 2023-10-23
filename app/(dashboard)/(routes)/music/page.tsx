@@ -14,10 +14,12 @@ import {useRouter} from "next/navigation";
 import {ChatCompletionRequestMessage} from 'openai';
 import Empty from "@/components/Empty";
 import Loader from "@/components/Loader";
+import {useProModal} from "@/hooks/use-pro-modal";
 
 
 const Page = () => {
     const router = useRouter();
+    const proModal = useProModal();
     const [music, setMusic] = useState<string>();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -34,7 +36,9 @@ const Page = () => {
             form.reset();
         }
         catch(error: any){
-            console.log(error);
+            if(error?.response?.status === 403){
+                proModal.onOpen();
+            }
         }
         finally {
             router.refresh();
